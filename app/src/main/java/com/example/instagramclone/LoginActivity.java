@@ -2,6 +2,7 @@ package com.example.instagramclone;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -55,6 +56,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                             if (user != null && e == null) {
                                 FancyToast.makeText(LoginActivity.this, user.getUsername() + " is logged in",
                                         Toast.LENGTH_SHORT, FancyToast.SUCCESS, true).show();
+                                transitionToSocialMediaActivity();
                             } else {
                                 FancyToast.makeText(LoginActivity.this, "error: " + e.getMessage(),
                                         Toast.LENGTH_SHORT, FancyToast.ERROR, true).show();
@@ -68,4 +70,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 break;
         }
     }//onClick
+
+    private void transitionToSocialMediaActivity(){
+        Intent intent = new Intent(LoginActivity.this, SocialMediaActivity.class);
+        startActivity(intent);
+    }
 }

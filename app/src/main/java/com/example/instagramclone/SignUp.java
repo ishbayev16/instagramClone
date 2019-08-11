@@ -53,7 +53,8 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
 
 
         if(ParseUser.getCurrentUser()!=null) {
-            ParseUser.getCurrentUser().logOut();
+//            ParseUser.getCurrentUser().logOut();
+            transitionToSocialMediaActivity();
         }
 
     }//onCreate
@@ -92,6 +93,7 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
                             if (e == null) {
                                 FancyToast.makeText(SignUp.this, appUser.get("username") + " is signed up",
                                         Toast.LENGTH_SHORT, FancyToast.SUCCESS, true).show();
+                                transitionToSocialMediaActivity();
                             } else {
                                 FancyToast.makeText(SignUp.this, "error: " + e.getMessage(),
                                         Toast.LENGTH_SHORT, FancyToast.ERROR, true).show();
@@ -115,5 +117,11 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
         }catch (Exception e){
             e.printStackTrace();
         }
+    }//rootLayoutTapped
+
+    private void transitionToSocialMediaActivity(){
+        Intent intent = new Intent(SignUp.this, SocialMediaActivity.class);
+        startActivity(intent);
     }
+
 }
