@@ -3,20 +3,65 @@ package com.example.instagramclone;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.parse.FindCallback;
+import com.parse.GetCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
+import com.parse.ParseQuery;
 import com.parse.SaveCallback;
 import com.shashank.sony.fancytoastlib.FancyToast;
 
+import java.util.List;
+
 public class SignUp extends AppCompatActivity {
+
+    TextView txtGetData;
+
+    //some comment
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
+
+        txtGetData = findViewById(R.id.txtGetData);
+
+        txtGetData.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ParseQuery<ParseObject> parseQuery = ParseQuery.getQuery("KickBoxer");
+//                parseQuery.getInBackground("bYG6s8J7bJ", new GetCallback<ParseObject>() {
+//                    @Override
+//                    public void done(ParseObject object, ParseException e) {
+//
+//                        String name = object.get("name")+"";
+//
+//                        if(object!=null && e==null){
+//                            txtGetData.setText(object.get("name") + "");
+//                        }
+//                    }
+//                });
+                ParseQuery<ParseObject> queryall = ParseQuery.getQuery("KickBoxer");
+                queryall.findInBackground(new FindCallback<ParseObject>() {
+                    @Override
+                    public void done(List<ParseObject> objects, ParseException e) {
+                        if(e==null){
+                            if(objects.size()>0){
+                                txtGetData.setText(objects.size()+"");
+                            }
+                        }else{
+                            Toast.makeText(SignUp.this,"error",Toast.LENGTH_LONG).show();
+                        }
+                    }
+                });
+            }
+        });
+
     }
 
     public void helloWorldTapped(View view){
