@@ -2,9 +2,11 @@ package com.example.instagramclone;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,6 +23,7 @@ import java.util.List;
 public class SignUp extends AppCompatActivity {
 
     TextView txtGetData;
+    private Button btnTransition;
 
     //some comment
 
@@ -30,6 +33,9 @@ public class SignUp extends AppCompatActivity {
         setContentView(R.layout.activity_sign_up);
 
         txtGetData = findViewById(R.id.txtGetData);
+
+        btnTransition = findViewById(R.id.btnNextActivity);
+
 
         txtGetData.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,6 +53,11 @@ public class SignUp extends AppCompatActivity {
 //                    }
 //                });
                 ParseQuery<ParseObject> queryall = ParseQuery.getQuery("KickBoxer");
+
+                queryall.whereGreaterThan("kick_power",100);
+                queryall.whereEqualTo("kick_power",500);
+
+
                 queryall.findInBackground(new FindCallback<ParseObject>() {
                     @Override
                     public void done(List<ParseObject> objects, ParseException e) {
@@ -60,9 +71,19 @@ public class SignUp extends AppCompatActivity {
                     }
                 });
             }
+        });//onClickListener
+
+        btnTransition.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(SignUp.this, SignUpLoginActivity.class);
+                startActivity(intent);
+
+            }
         });
 
-    }
+    }//onCreate
 
     public void helloWorldTapped(View view){
 
