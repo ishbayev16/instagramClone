@@ -1,49 +1,21 @@
-package com.example.instagramclone;
+ package com.example.instagramclone;
 
+
+//import android.support.v7.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
 
 import com.google.android.material.tabs.TabLayout;
 
+ public class SocialMediaActivity extends AppCompatActivity {
 
-import android.Manifest;
-import android.app.ProgressDialog;
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
-import android.net.Uri;
-import android.os.Bundle;
-import android.provider.MediaStore;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.design.widget.TabLayout;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.widget.Toast;
-
-import com.parse.ParseException;
-import com.parse.ParseFile;
-import com.parse.ParseObject;
-import com.parse.ParseUser;
-import com.parse.SaveCallback;
-import com.shashank.sony.fancytoastlib.FancyToast;
-
-import java.io.ByteArrayOutputStream;
-
-
-
-
-public class SocialMediaActivity extends AppCompatActivity {
-
-
-//    private android.support.v7.widget.Toolbar toolbar;
-    private androidx.appcompat.widget.Toolbar toolbar;
+    private Toolbar toolbar;
     private ViewPager viewPager;
     private TabLayout tabLayout;
+
     private TabAdapter tabAdapter;
 
     @Override
@@ -66,6 +38,6 @@ public class SocialMediaActivity extends AppCompatActivity {
 
         tabLayout.setupWithViewPager(viewPager, false);
 
-    }
 
+    }
 }

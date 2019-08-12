@@ -28,4 +28,5 @@ public class ProfileTab extends Fragment {
         return inflater.inflate(R.layout.fragment_profile_tab, container, false);
     }
 
+
 }

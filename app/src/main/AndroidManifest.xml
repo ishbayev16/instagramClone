@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".SocialMediaActivity"
-             android:theme="@style/AppTheme.NoActionBar"
+            android:theme="@style/AppTheme.NoActionBar"
             ></activity>
         <activity android:name=".LoginActivity" />
         <activity android:name=".SignUp">
